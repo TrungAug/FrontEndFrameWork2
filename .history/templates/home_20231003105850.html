@@ -1,28 +1,35 @@
 <div class="container">
     <div id="myCarouseExample" class="carousel slide mb-3" data-bs-ride="carousel">
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#myCarouseExample" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#myCarouseExample" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#myCarouseExample" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#myCarouseExample" data-bs-slide-to="0"
+                class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#myCarouseExample" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#myCarouseExample" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="3000">
-                <img src="/assets/images/slider/slide1.png" class="d-block w-100" alt="...">
+                <img src="/assets/images/slider/slide1.png"
+                    class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item" data-bs-interval="3000">
-                <img src="/assets/images/slider/slide2.png" class="d-block w-100" alt="...">
+                <img src="/assets/images/slider/slide2.png"
+                    class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item" data-bs-interval="3000">
-                <img src="/assets/images/slider/slide3.png" class="d-block w-100" alt="...">
+                <img src="/assets/images/slider/slide3.png"
+                    class="d-block w-100" alt="...">
             </div>
 
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#myCarouseExample" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarouseExample"
+            data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#myCarouseExample" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarouseExample"
+            data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
@@ -471,8 +478,8 @@
         </div>
         <div class="col-lg-3">
             <div class="card mt-3" ng-controller="LoginControllerHTML">
-                <div class="card-body">
-                    <div class="row" ng-show="isLogin">
+                <div class="card-body" ng-show="isLogin">
+                    <div class="row">
                         <div class="col-3 col-sm-2 col-md-4">
                             <div class="box-icon">
                                 <img class="w-100" src="assets/images/soc.jpg" alt="">
@@ -489,30 +496,10 @@
                                 viên</button>
                         </div>
                     </div>
-                    <!-- <div class="row flex-column" ng-hide="isLogin">
-                        <div class="col-9 col-sm-10 col-md-8 w-100">
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <strong>Error!</strong> Bạn chưa đăng nhập...
-                            </div>
-                        </div>
-                        <div class="col-3 col-sm-2 col-md-4">
-                            <button type="button" class="btn btn-success btn-sm mt-2">
-                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                    data-bs-target="#loginModal">Đăng
-                                    nhập</a>
-                            </button>
-                        </div>
-                    </div> -->
-                    <div class="d-flex bd-highlight" ng-hide="isLogin">
-                        <div class="flex-grow-1 bd-highlight alert alert-danger alert-dismissible fade show"
-                            role="alert">
-                            <strong>Error!</strong> Bạn chưa đăng nhập...
-                            <strong class="">
-                                <a class="link-success" href="" data-bs-toggle="modal" data-bs-target="#loginModal">Đăng
-                                    nhập</a>
-                            </strong>
-                        </div>
-                    </div>
+                </div>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert" ng-hide="isLogin">
+                  <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> -->
+                  <strong>Error!</strong> Bạn chưa đăng nhập...
                 </div>
             </div>
             <div class="card mt-3">

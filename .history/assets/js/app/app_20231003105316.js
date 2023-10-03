@@ -18,7 +18,7 @@ app
 
 
 function LoginController($scope) {
-    $scope.isLogin=false;
+    $scope.isLogin=false
     $scope.user = {
         username: '',
         password: ''
