@@ -96,14 +96,3 @@ body {
     border-bottom-left-radius: 0.5rem;
   }
 }
-
-.bgimgContactPage {
-  background-image: url('/assets/images/bgImage/bgImageContact.jpg');
-  height: 100%;
-  background-position: center;
-  background-size: cover;
-  position: relative;
-  color: white;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 17px;
-}

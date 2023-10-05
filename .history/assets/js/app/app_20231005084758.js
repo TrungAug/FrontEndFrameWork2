@@ -12,9 +12,6 @@ app.config(function ($routeProvider) {
         .when("/about", {
             templateUrl: "templates/about.html",
         })
-        .when("/blog", {
-            templateUrl: "templates/blog.html",
-        })
         .when("/question", {
             templateUrl: "templates/question.html",
             controller: QuestionController
@@ -33,9 +30,9 @@ app
 // Start: Đăng nhập    
 function LoginController($scope) {
     $scope.isLogin = false;
-    let user = {
-        username: 'A',
-        password: '123'
+    $scope.user = {
+        username: '',
+        password: ''
     };
     $scope.students = [
         {
@@ -198,7 +195,7 @@ function QuestionController($scope, $timeout) {
 
     let currentQuestionIndex = 0;
     let score = 0;
-    $scope.countdown = 30; // fixed for performance
+    $scope.countdown = 90;
     let timeLeft = $scope.countdown;
 
     const questions = [
@@ -244,7 +241,10 @@ function QuestionController($scope, $timeout) {
             clearInterval(interval);
             timerDisplay.innerHTML = "Hết giờ!";
             // Update: Hiển thị kết quả làm bài khi hết giờ
-            updateResults();
+            questionContainer.innerHTML = `<h5>Kết thúc. Bạn đạt được ${score}/${questions.length} câu đúng</h5>`;
+            nextButton.disabled = true;
+            statusQuestion.innerHTML = `<h6>Câu ${currentQuestionIndex} trong ${questions.length}</h6>`;
+            scoreButton.textContent = `"Score: "+${score}/${questions.length}`;
         } else {
             timeLeft--;
         }
@@ -269,7 +269,7 @@ function QuestionController($scope, $timeout) {
         `;
         questionContainer.innerHTML = questionHtml;
         statusQuestion.innerHTML = `<h6>Câu ${currentQuestionIndex + 1} trong ${questions.length}</h6>`;
-        scoreButton.textContent = `Score: ${score}/${questions.length}`;
+        scoreButton.textContent = `${score}/${questions.length}`;
     }
 
     function checkAnswer(index) {
@@ -283,7 +283,10 @@ function QuestionController($scope, $timeout) {
         if (currentQuestionIndex < questions.length) {
             displayQuestion(currentQuestionIndex);
         } else {
-            updateResults();
+            questionContainer.innerHTML = `<h5>Kết thúc. Bạn đạt được ${score}/${questions.length} câu đúng</h5>`;
+            nextButton.disabled = true;
+            statusQuestion.innerHTML = `<h6>Câu ${currentQuestionIndex} trong ${questions.length}</h6>`;
+            scoreButton.textContent = `${score}/${questions.length}`;
         }
     }
 
@@ -301,12 +304,6 @@ function QuestionController($scope, $timeout) {
         }
     });
 
-    function updateResults() {
-        questionContainer.innerHTML = `<h5>Kết thúc. Bạn đạt được ${score}/${questions.length} câu đúng</h5>`;
-        nextButton.disabled = true;
-        statusQuestion.innerHTML = `<h6>Câu ${currentQuestionIndex} trong ${questions.length}</h6>`;
-        scoreButton.textContent = `Score: ${score}/${questions.length}`;
-    }
     displayQuestion(currentQuestionIndex);
 
 }

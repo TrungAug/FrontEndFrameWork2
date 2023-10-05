@@ -12,9 +12,6 @@ app.config(function ($routeProvider) {
         .when("/about", {
             templateUrl: "templates/about.html",
         })
-        .when("/blog", {
-            templateUrl: "templates/blog.html",
-        })
         .when("/question", {
             templateUrl: "templates/question.html",
             controller: QuestionController
@@ -33,9 +30,9 @@ app
 // Start: Đăng nhập    
 function LoginController($scope) {
     $scope.isLogin = false;
-    let user = {
-        username: 'A',
-        password: '123'
+    $scope.user = {
+        username: '',
+        password: ''
     };
     $scope.students = [
         {
@@ -72,6 +69,7 @@ function LoginController($scope) {
     $scope.login = function () {
 
     }
+    console.log(user.username)
 }
 //End: Đăng nhập
 

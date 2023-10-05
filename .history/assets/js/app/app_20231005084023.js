@@ -12,9 +12,6 @@ app.config(function ($routeProvider) {
         .when("/about", {
             templateUrl: "templates/about.html",
         })
-        .when("/blog", {
-            templateUrl: "templates/blog.html",
-        })
         .when("/question", {
             templateUrl: "templates/question.html",
             controller: QuestionController
@@ -33,9 +30,9 @@ app
 // Start: Đăng nhập    
 function LoginController($scope) {
     $scope.isLogin = false;
-    let user = {
-        username: 'A',
-        password: '123'
+    $scope.user = {
+        username: '',
+        password: ''
     };
     $scope.students = [
         {
@@ -189,18 +186,30 @@ function ProductController($scope) {
 
 //Bảng câu hỏi
 function QuestionController($scope, $timeout) {
-    // Declare variables
+
+    //Start: Time to Quiz
     const timerDisplay = document.getElementById('timer');
-    const questionContainer = document.getElementById("question-container");
-    const nextButton = document.getElementById("next-button");
-    const scoreButton = document.getElementById("score-button");
-    const statusQuestion = document.getElementById("status-question");
-
-    let currentQuestionIndex = 0;
-    let score = 0;
-    $scope.countdown = 30; // fixed for performance
+    $scope.countdown = 90; //  
     let timeLeft = $scope.countdown;
+    function updateTimer() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timerDisplay.innerHTML = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        if (timeLeft === 0) {
+            clearInterval(interval);
+            timerDisplay.innerHTML = "Hết giờ!";
+            // Update: Hiển thị kết quả làm bài khi hết giờ
+        } else {
+            timeLeft--;
+        }
+    }
 
+    updateTimer(); // Initial display
+
+    const interval = setInterval(updateTimer, 1000); // Update the timer every 1 second
+    //End: Time to Quiz
+
+    //Start : Declare list of question for Quiz
     const questions = [
         {
             question: "Bạn Tên là gì?",
@@ -234,79 +243,5 @@ function QuestionController($scope, $timeout) {
         },
         // Add more questions in the same format
     ];
-
-    //Start: Time to Quiz
-    function updateTimer() {
-        const minutes = Math.floor(timeLeft / 60);
-        const seconds = timeLeft % 60;
-        timerDisplay.innerHTML = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        if (timeLeft === 0) {
-            clearInterval(interval);
-            timerDisplay.innerHTML = "Hết giờ!";
-            // Update: Hiển thị kết quả làm bài khi hết giờ
-            updateResults();
-        } else {
-            timeLeft--;
-        }
-    }
-
-    updateTimer();
-    const interval = setInterval(updateTimer, 1000);
-    //End: Time to Quiz
-
-    function displayQuestion(index) {
-        const question = questions[index];
-        const optionsHtml = question.options.map((option, i) => `
-            <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="q${index + 1}a${i + 1}" name="q${index + 1}" value="${option}">
-                <label class="custom-control-label" for="q${index + 1}a${i + 1}">${option}</label>
-            </div>
-        `).join("");
-
-        const questionHtml = `
-            <h5>${index + 1}. ${question.question}</h5>
-            ${optionsHtml}
-        `;
-        questionContainer.innerHTML = questionHtml;
-        statusQuestion.innerHTML = `<h6>Câu ${currentQuestionIndex + 1} trong ${questions.length}</h6>`;
-        scoreButton.textContent = `Score: ${score}/${questions.length}`;
-    }
-
-    function checkAnswer(index) {
-        const selectedOption = document.querySelector(`input[name="q${index + 1}"]:checked`);
-        if (!selectedOption.checked) { return }
-        else if (!selectedOption) { return false }
-        else { return selectedOption.value === questions[index].correctAnswer };
-    }
-
-    function checkQuestionFinish(currentQuestionIndex) {
-        if (currentQuestionIndex < questions.length) {
-            displayQuestion(currentQuestionIndex);
-        } else {
-            updateResults();
-        }
-    }
-
-    nextButton.addEventListener("click", function (event) {
-        event.preventDefault();
-
-        if (checkAnswer(currentQuestionIndex)) {
-            currentQuestionIndex++;
-            score++;
-            checkQuestionFinish(currentQuestionIndex);
-        } else {
-            currentQuestionIndex++;
-            score = score;
-            checkQuestionFinish(currentQuestionIndex);
-        }
-    });
-
-    function updateResults() {
-        questionContainer.innerHTML = `<h5>Kết thúc. Bạn đạt được ${score}/${questions.length} câu đúng</h5>`;
-        nextButton.disabled = true;
-        statusQuestion.innerHTML = `<h6>Câu ${currentQuestionIndex} trong ${questions.length}</h6>`;
-        scoreButton.textContent = `Score: ${score}/${questions.length}`;
-    }
-    displayQuestion(currentQuestionIndex);
-
+    //End : Declare list of question for Quiz
 }

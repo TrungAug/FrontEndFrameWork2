@@ -12,9 +12,6 @@ app.config(function ($routeProvider) {
         .when("/about", {
             templateUrl: "templates/about.html",
         })
-        .when("/blog", {
-            templateUrl: "templates/blog.html",
-        })
         .when("/question", {
             templateUrl: "templates/question.html",
             controller: QuestionController
@@ -33,9 +30,9 @@ app
 // Start: Đăng nhập    
 function LoginController($scope) {
     $scope.isLogin = false;
-    let user = {
-        username: 'A',
-        password: '123'
+    $scope.user = {
+        username: '',
+        password: ''
     };
     $scope.students = [
         {
@@ -198,7 +195,7 @@ function QuestionController($scope, $timeout) {
 
     let currentQuestionIndex = 0;
     let score = 0;
-    $scope.countdown = 30; // fixed for performance
+    $scope.countdown = 10;
     let timeLeft = $scope.countdown;
 
     const questions = [
@@ -300,7 +297,7 @@ function QuestionController($scope, $timeout) {
             checkQuestionFinish(currentQuestionIndex);
         }
     });
-
+    
     function updateResults() {
         questionContainer.innerHTML = `<h5>Kết thúc. Bạn đạt được ${score}/${questions.length} câu đúng</h5>`;
         nextButton.disabled = true;

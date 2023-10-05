@@ -12,9 +12,6 @@ app.config(function ($routeProvider) {
         .when("/about", {
             templateUrl: "templates/about.html",
         })
-        .when("/blog", {
-            templateUrl: "templates/blog.html",
-        })
         .when("/question", {
             templateUrl: "templates/question.html",
             controller: QuestionController
@@ -33,9 +30,9 @@ app
 // Start: Đăng nhập    
 function LoginController($scope) {
     $scope.isLogin = false;
-    let user = {
-        username: 'A',
-        password: '123'
+    $scope.user = {
+        username: '',
+        password: ''
     };
     $scope.students = [
         {
@@ -274,7 +271,7 @@ function QuestionController($scope, $timeout) {
 
     function checkAnswer(index) {
         const selectedOption = document.querySelector(`input[name="q${index + 1}"]:checked`);
-        if (!selectedOption.checked) { return }
+        if (!selectedOption.checked) { alert("Vui lòng chọn đáp án!")}
         else if (!selectedOption) { return false }
         else { return selectedOption.value === questions[index].correctAnswer };
     }
