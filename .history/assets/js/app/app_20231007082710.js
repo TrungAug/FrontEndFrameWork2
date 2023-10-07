@@ -84,135 +84,141 @@ function LoginController($scope) {
 function ProductController($scope) {
     $scope.products = [
         {
-            id: 1,
+            id:1,
             image: "assets/logos/1.png",
             title: "Lập trình Android cơ bản",
             textDescription: "Lập trình Android cơ bản"
         },
         {
-            id: 2,
+            id:2,
             image: "assets/logos/2.png",
             title: "Lập trình Android nâng cao",
             textDescription: "Lập trình Android nâng cao"
         },
         {
-            id: 3,
+            id:3,
             image: "assets/logos/3.png",
             title: "Kiểm thử ứng dụng Android",
             textDescription: "Kiểm thử ứng dụng Android"
         },
         {
-            id: 4,
+            id:4,
             image: "assets/logos/4.png",
             title: "Thiết kế UI trên Android",
             textDescription: "Thiết kế UI trên Android"
         },
         {
-            id: 5,
+            id:5,
             image: "assets/logos/5.png",
             title: "Lập trình ASP.NET",
             textDescription: "Lập trình ASP.NET"
         },
         {
-            id: 6,
+            id:6,
             image: "assets/logos/6.png",
             title: "Điện toán đám mây",
             textDescription: "Điện toán đám mây"
         },
         {
-            id: 7,
+            id:7,
             image: "assets/logos/7.png",
             title: "SQL Server",
             textDescription: "SQL Server"
         },
         {
-            id: 8,
+            id:8,
             image: "assets/logos/8.png",
             title: "SQL Server",
             textDescription: "SQL Server"
         },
         {
-            id: 9,
+            id:9,
             image: "assets/logos/9.png",
             title: "Cơ sở dữ liệu",
             textDescription: "Cơ sở dữ liệu"
         },
         {
-            id: 10,
+            id:10,
             image: "assets/logos/10.png",
             title: "Lập trình game 2D",
             textDescription: "Lập trình game 2D"
         },
         {
-            id: 11,
+            id:11,
             image: "assets/logos/11.png",
             title: "HTML5 và CSS3",
             textDescription: "HTML5 và CSS3"
         },
         {
-            id: 12,
+            id:12,
             image: "assets/logos/12.png",
             title: "Internet Marketing",
             textDescription: "Internet Marketing"
         },
         {
-            id: 13,
+            id:13,
             image: "assets/logos/13.png",
             title: "Lập trình Java nâng cao",
             textDescription: "Lập trình Java nâng cao"
         },
         {
-            id: 14,
+            id:14,
             image: "assets/logos/14.png",
             title: "Lập trình OOP với Java",
             textDescription: "Lập trình OOP với Java"
         },
         {
-            id: 15,
+            id:15,
             image: "assets/logos/14.png",
             title: "Lập trình JavaScript",
             textDescription: "Lập trình JavaScript"
         },
         {
-            id: 16,
+            id:16,
             image: "assets/logos/15.png",
             title: "Thiết kế layout",
             textDescription: "Thiết kế layout"
         },
         {
-            id: 17,
+            id:17,
             image: "assets/logos/16.png",
             title: "Thiết kế web cho di động",
             textDescription: "Thiết kế web cho di động"
         },
         {
-            id: 18,
+            id:18,
             image: "assets/logos/17.png",
             title: "Lập trình PHP",
             textDescription: "Lập trình PHP"
         },
         {
-            id: 19,
+            id:19,
             image: "assets/logos/18.png",
             title: "Quản lý dự án với Agile",
             textDescription: "Quản lý dự án với Agile"
         },
         {
-            id: 20,
+            id:20,
             image: "assets/logos/19.png",
             title: "Lập trình VB.NET",
             textDescription: "Lập trình VB.NET"
         },
         {
-            id: 21,
+            id:21,
             image: "assets/logos/20.png",
             title: "Xây dựng trang web",
             textDescription: "Xây dựng trang web"
         }
     ]
+
+    $scope.showDetails = function(product){
+        product.showDetails=true;
+    };
+    $scope.hideDetails = function(product){
+        product.hideDetails=true;
+    };
+
 }
-
-
 //End: Danh sách khóa học
 
 //Bảng câu hỏi
@@ -342,8 +348,6 @@ function QuestionController($scope, $timeout) {
 //End: Question
 
 //detailCourse
-function detailController($scope, $routeParams) {
+function detailController ($scope,$routeParams){
 
 }
-
-

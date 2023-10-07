@@ -210,9 +210,8 @@ function ProductController($scope) {
             textDescription: "Xây dựng trang web"
         }
     ]
+   
 }
-
-
 //End: Danh sách khóa học
 
 //Bảng câu hỏi
@@ -345,5 +344,3 @@ function QuestionController($scope, $timeout) {
 function detailController($scope, $routeParams) {
 
 }
-
-

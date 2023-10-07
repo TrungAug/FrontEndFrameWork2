@@ -210,6 +210,19 @@ function ProductController($scope) {
             textDescription: "Xây dựng trang web"
         }
     ]
+    $scope.detailCouser=function(){  
+        return "Đây là khóa học";
+    }
+    $scope.detailProduct =function($routeParams) {
+        // console.log($routeParams.id)
+        // students.forEach(element => {
+        //     if (element.id == $routeParams.id) {
+        //         $scope.name = element.name;
+        //         $scope.age = element.age;
+        //     }
+        // });
+        return $routeParams.id;
+    }
 }
 
 
@@ -345,5 +358,3 @@ function QuestionController($scope, $timeout) {
 function detailController($scope, $routeParams) {
 
 }
-
-

@@ -210,9 +210,21 @@ function ProductController($scope) {
             textDescription: "Xây dựng trang web"
         }
     ]
+    $scope.detailCouser = function () {
+
+        return `<div class="container">
+    <div class="card-header">
+        Đây là tên khóa học
+    </div>
+    <div class="card-body">
+        Đây là nôi dung khóa học
+    </div>
+    <div class="card-footer">
+        Đây là id khóa học
+    </div>
+</div>`
+    }
 }
-
-
 //End: Danh sách khóa học
 
 //Bảng câu hỏi
@@ -345,5 +357,3 @@ function QuestionController($scope, $timeout) {
 function detailController($scope, $routeParams) {
 
 }
-
-

@@ -345,5 +345,3 @@ function QuestionController($scope, $timeout) {
 function detailController($scope, $routeParams) {
 
 }
-
-

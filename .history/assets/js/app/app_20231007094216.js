@@ -210,6 +210,17 @@ function ProductController($scope) {
             textDescription: "Xây dựng trang web"
         }
     ]
+    $scope.detailCouser=function(){  
+        return "Đây là khóa học";
+    }
+    $scope.detailProduct =function() {
+        return '<div class="card">' +
+      '<div class="card-header">Tooltip Content</div>' +
+      '<div class="card-body">' +
+      'This is the dynamic content for the tooltip.' +
+      '</div>' +
+      '</div>';
+    }
 }
 
 
@@ -345,5 +356,3 @@ function QuestionController($scope, $timeout) {
 function detailController($scope, $routeParams) {
 
 }
-
-

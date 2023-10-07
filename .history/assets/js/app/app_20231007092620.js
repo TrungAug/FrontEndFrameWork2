@@ -210,9 +210,27 @@ function ProductController($scope) {
             textDescription: "Xây dựng trang web"
         }
     ]
+    $scope.detailCouser = function () {
+        let tooltipContent = "";
+        products.forEach(product => {
+            tooltipContent = `
+      <div class="container">
+        <div class="card-header">
+          ${product.title}
+        </div>
+        <div class="card-body">
+          ${product.textDescription}
+        </div>
+        <div class="card-footer">
+          ID: ${product.id}
+        </div>
+      </div>
+    `;
+        });
+        return $sce.trustAsHtml(tooltipContent);
+        // return "Đây là chi tiết khóa học"
+    }
 }
-
-
 //End: Danh sách khóa học
 
 //Bảng câu hỏi
@@ -345,5 +363,3 @@ function QuestionController($scope, $timeout) {
 function detailController($scope, $routeParams) {
 
 }
-
-

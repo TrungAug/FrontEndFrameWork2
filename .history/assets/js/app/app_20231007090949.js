@@ -210,9 +210,10 @@ function ProductController($scope) {
             textDescription: "Xây dựng trang web"
         }
     ]
+    $scope.getTooltipTitle = function (product) {
+        return 'Tooltip for ' + product.title;
+    };
 }
-
-
 //End: Danh sách khóa học
 
 //Bảng câu hỏi
@@ -345,5 +346,3 @@ function QuestionController($scope, $timeout) {
 function detailController($scope, $routeParams) {
 
 }
-
-
