@@ -104,6 +104,8 @@ body {
   background-size: cover;
   position: relative;
   color: white;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 17px;
 }
 
 .bgimgDetailCoursePage {
@@ -112,5 +114,7 @@ body {
   background-position: center;
   background-size: cover;
   position: relative;
-  /* color: white; */
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 17px;
 }

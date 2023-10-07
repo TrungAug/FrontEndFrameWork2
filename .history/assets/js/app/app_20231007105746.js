@@ -103,7 +103,7 @@ let products = [
         id: 2,
         image: "assets/logos/2.png",
         title: "Lập trình Android nâng cao",
-        textDescription: "Lập trình Android nâng cao đòi hỏi hiểu biết về tối ưu hóa SEO. Cải thiện UX, tối ưu hóa tốc độ tải trang, sử dụng từ khoá và quản lý nội dung đúng cách. Thiết kế ứng dụng Android phải cân nhắc tới cả yếu tố SEO để đảm bảo tối ưu hóa hiển thị trên các công cụ tìm kiếm."
+        textDescription: "Lập trình Android nâng cao"
     },
     {
         id: 3,

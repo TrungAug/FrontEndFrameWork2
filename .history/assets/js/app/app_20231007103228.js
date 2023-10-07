@@ -33,17 +33,6 @@ app
     .controller('ProductControllerHTML', ProductController)
     .controller('QuestionControllerHTML', QuestionController);
 
-app.filter('truncateWordsHTML', function () {
-    return function (input, limit) {
-        if (!input) return '';
-
-        let words = input.split(' ');
-        if (words.length <= limit) {
-            return input;
-        }
-        return words.slice(0, limit).join(' ') + '...';
-    };
-})
 
 // Start: Đăng nhập    
 function LoginController($scope) {
@@ -97,13 +86,13 @@ let products = [
         id: 1,
         image: "assets/logos/1.png",
         title: "Lập trình Android cơ bản",
-        textDescription: "Lập trình Android cơ bản là quá trình tạo ứng dụng di động cho hệ điều hành Android. Để tối ưu hóa SEO, cần hiểu về thiết kế giao diện người dùng, quản lý nội dung, và sử dụng các thẻ meta cho ứng dụng Android. Tối ưu hóa hình ảnh, sử dụng từ khoá phù hợp, và tạo URL thân thiện với SEO cũng là phần quan trọng trong quá trình phát triển ứng dụng Android để nâng cao hiển thị trên các công cụ tìm kiếm."
+        textDescription: "Lập trình Android cơ bản"
     },
     {
         id: 2,
         image: "assets/logos/2.png",
         title: "Lập trình Android nâng cao",
-        textDescription: "Lập trình Android nâng cao đòi hỏi hiểu biết về tối ưu hóa SEO. Cải thiện UX, tối ưu hóa tốc độ tải trang, sử dụng từ khoá và quản lý nội dung đúng cách. Thiết kế ứng dụng Android phải cân nhắc tới cả yếu tố SEO để đảm bảo tối ưu hóa hiển thị trên các công cụ tìm kiếm."
+        textDescription: "Lập trình Android nâng cao"
     },
     {
         id: 3,
@@ -222,9 +211,9 @@ let products = [
 ]
 
 function ProductController($scope) {
-    $scope.listProducts = products;
-
+    $scope.listProducts=products;
 }
+
 
 //End: Danh sách khóa học
 
@@ -360,8 +349,6 @@ function detailController($scope, $routeParams) {
     products.forEach(element => {
         if (element.id == $routeParams.id) {
             $scope.title = element.title;
-            $scope.image = element.image;
-            $scope.textDescription = element.textDescription;
         }
     });
 }
