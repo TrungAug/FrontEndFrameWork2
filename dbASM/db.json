@@ -64,6 +64,14 @@
       "email": "trung2@gmail.com",
       "password": "12345678",
       "id": 7
+    },
+    {
+      "fullname": "Phan Văn Tính",
+      "username": "pvtinh",
+      "birthday": "2023-10-21T17:00:00.000Z",
+      "email": "tinh@gmail.com",
+      "password": "12345678",
+      "id": 8
     }
   ],
   "products": [
@@ -38187,6 +38195,32 @@
           ]
         }
       ]
+    }
+  ],
+  "posts": [
+    {
+      "id": "post1",
+      "image": "assets/images/post/1.png",
+      "title": "Hướng dẫn chi tiết cách sử dụng Dev Mode trong khóa Pro",
+      "description": "Chào bạn! Nếu bạn đã là học viên khóa Pro của F99, chắc hẳn bạn đã biết tới Dev Mode - giúp thực hành code song song khi xem video (bạn không cần phải dùng tới VS code nữa)."
+    },
+    {
+      "id": "post2",
+      "image": "assets/images/post/2.png",
+      "title": "Tất tần tật` về cải thiện Performance của 1 trang web",
+      "description": "Ở bài viết này, chúng ta cùng nhau tìm hiểu về các vấn đề liên quan đến Performance ở phía FE. Không dài dòng nữa, bắt đầu thôi"
+    },
+    {
+      "id": "post3",
+      "image": "assets/images/post/3.jpg",
+      "title": "Một số cẩm nang hay khi làm việc với HTML/CSS",
+      "description": "Bài viết này đơn giản là nơi để mình lưu lại những kinh nghiệm mình đã làm việc với HTML/CSS cũng như chia sẻ phần nào cho bạn nào chưa biết. Mình cùng bắt đầu bài viết thôi, yooolo"
+    },
+    {
+      "id": "post4",
+      "image": "assets/images/post/4.jpg",
+      "title": "Đánh giá ÉP CHÍN CHÍN với một số trường",
+      "description": "Flex về F99 nhẹ xíu cho mọi người cùng biết nhé!!"
     }
   ]
 }
