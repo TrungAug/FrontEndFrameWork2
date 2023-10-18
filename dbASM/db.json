@@ -1,12 +1,12 @@
 {
   "profiles": [
     {
-      "password": "iloveyou",
-      "username": "teonv",
-      "fullname": "Nguyễn Văn Tèo",
+      "password": "12345678",
+      "username": "teodoi",
+      "fullname": "Trương Văn Tèo",
       "email": "tnv@fpt.edu.vn",
-      "gender": "true",
-      "birthday": "1985-10-11",
+      "gender": "Nam",
+      "birthday": "2023-09-30T17:00:00.000Z",
       "schoolfee": "2500000",
       "marks": "0",
       "id": 1
@@ -79,6 +79,10 @@
     },
     {
       "password": "12345678",
+      "username": "teodoi",
+      "fullname": "Trương Văn Tèo",
+      "gender": "Nam",
+      "birthday": "2023-09-30T17:00:00.000Z",
       "id": 10
     }
   ],
