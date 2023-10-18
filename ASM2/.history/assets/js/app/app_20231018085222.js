@@ -108,57 +108,26 @@ function LoginController($scope, $rootScope, $http) {
 
 function RegisterController($scope, $http) {
     $scope.isRegisterSuccess = false;
-    $scope.listUers = [];
-    $http({
-        method: 'GET',
-        url: BASE_URL + 'profiles'
-    }).then(function successCallback(response) {
-        $scope.listUers = response.data;
-        $scope.register = function () {
-            let emailInput = $scope.user.email;
-            let usernameInput = $scope.user.username;
-            $scope.listUers.forEach(element => {
-                if (element.username == usernameInput && element.email == emailInput) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Register Failed',
-                        text: "Tên đăng nhập và email đã tồn tại",
-                    });
-                } else if (element.username == usernameInput) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Register Failed',
-                        text: "Tên đăng nhập đã tồn tại",
-                    });
-                } else if (element.email == emailInput) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Register Failed',
-                        text: "Email đã tồn tại",
-                    });
-                } else {
-                    $scope.isRegisterSuccess = true;
-                }
-            })
-            if ($scope.isRegisterSuccess==true) {
-                $('#registerModal').modal('hide');
-                $http({
-                    method: 'POST',
-                    url: BASE_URL + 'profiles',
-                    data: $scope.user
-                }).then(function successCallback(response) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Register Success',
-                        text: "Đăng ký thành công",
-                    });                  
-                }, function errorCallback(response) {
-                });
-            }
-        }
-    }, function errorCallback(response) {
-    });
-   
+    $scope.listUers=[];
+    $scope.register = function () {
+        // $http({
+        //     method: 'POST',
+        //     url: BASE_URL + 'profiles',
+        //     data: $scope.user
+        // }).then(function successCallback(response) {
+        // }, function errorCallback(response) {           
+        // });
+        let email = $scope.user.email;
+        let username = $scope.user.username;
+        $http({
+            method: 'GET',
+            url: BASE_URL + 'profiles'
+        }).then(function successCallback(response) {
+            $scope.listUers=response.date;
+            console.log($scope.listUers);
+        }, function errorCallback(response) {           
+        });
+    }
 }
 
 // Start: danh sách khóa học

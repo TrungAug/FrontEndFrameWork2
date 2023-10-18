@@ -140,25 +140,23 @@ function RegisterController($scope, $http) {
                     $scope.isRegisterSuccess = true;
                 }
             })
-            if ($scope.isRegisterSuccess==true) {
-                $('#registerModal').modal('hide');
-                $http({
-                    method: 'POST',
-                    url: BASE_URL + 'profiles',
-                    data: $scope.user
-                }).then(function successCallback(response) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Register Success',
-                        text: "Đăng ký thành công",
-                    });                  
-                }, function errorCallback(response) {
-                });
-            }
         }
     }, function errorCallback(response) {
     });
-   
+    if ($scope.isRegisterSuccess) {
+        $http({
+            method: 'POST',
+            url: BASE_URL + 'profiles',
+            data: $scope.user
+        }).then(function successCallback(response) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Register Success',
+                text: "Đăng ký thành công",
+            });
+        }, function errorCallback(response) {
+        });
+    }
 }
 
 // Start: danh sách khóa học

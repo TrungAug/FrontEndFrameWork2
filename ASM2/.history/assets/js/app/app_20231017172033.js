@@ -52,8 +52,6 @@ app.filter('truncateWordsHTML', function () {
 function LoginController($scope, $rootScope, $http) {
     $rootScope.isLogin = false;
     $scope.listProfiles = [];
-    $scope.countLoginFailed = 0;
-    $scope.isDisabledLoginButton = false;
     $http({
         method: 'GET',
         url: BASE_URL + 'profiles'
@@ -69,96 +67,37 @@ function LoginController($scope, $rootScope, $http) {
             });
 
             if ($rootScope.isLogin == true) {
+                // alert("THÀNH CÔNG");
+                // window.location.href="/index.html";
                 $('#loginModal').modal('hide');
             } else {
-                $scope.countLoginFailed++;
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Login Failed',
-                    text: "Bạn còn " + (3 - $scope.countLoginFailed) + " lần đăng nhập",
-                });
-                if ($scope.countLoginFailed == 3) {
-                    $scope.isDisabledLoginButton = true;
-                }
+                alert("SAI TÀI KHOẢN");
             }
         }
     }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
     });
-    // $scope.closeLoginModal = function () {
-    //     $('#loginModal').modal('hide');
-    // }
-    // $('loginButton').click(
-    //     function () {
-    //         if ($rootScope.isLogin) {
-    //             $scope.closeLoginModal();
-    //         }else{
-    //             Swal.fire({
-    //                 icon: 'error',
-    //                 title: 'Login Failed',
-    //                 text: 'Vui lòng kiểm tra lại tài khoản',
-    //             });
-    //         }
-    //     }
-    // )
+
 }
 //Not complete yet
 //End: Đăng nhập
 
 function RegisterController($scope, $http) {
     $scope.isRegisterSuccess = false;
-    $scope.listUers = [];
-    $http({
-        method: 'GET',
-        url: BASE_URL + 'profiles'
-    }).then(function successCallback(response) {
-        $scope.listUers = response.data;
-        $scope.register = function () {
-            let emailInput = $scope.user.email;
-            let usernameInput = $scope.user.username;
-            $scope.listUers.forEach(element => {
-                if (element.username == usernameInput && element.email == emailInput) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Register Failed',
-                        text: "Tên đăng nhập và email đã tồn tại",
-                    });
-                } else if (element.username == usernameInput) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Register Failed',
-                        text: "Tên đăng nhập đã tồn tại",
-                    });
-                } else if (element.email == emailInput) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Register Failed',
-                        text: "Email đã tồn tại",
-                    });
-                } else {
-                    $scope.isRegisterSuccess = true;
-                }
-            })
-            if ($scope.isRegisterSuccess==true) {
-                $('#registerModal').modal('hide');
-                $http({
-                    method: 'POST',
-                    url: BASE_URL + 'profiles',
-                    data: $scope.user
-                }).then(function successCallback(response) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Register Success',
-                        text: "Đăng ký thành công",
-                    });                  
-                }, function errorCallback(response) {
-                });
-            }
-        }
-    }, function errorCallback(response) {
-    });
-   
+    $scope.register = function () {
+        $http({
+            method: 'POST',
+            url: BASE_URL + 'profiles',
+            data: $scope.user
+        }).then(function successCallback(response) {
+            // this callback will be called asynchronously
+            // when the response is available
+        }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        });
+    }
 }
 
 // Start: danh sách khóa học
@@ -173,21 +112,21 @@ function ProductController($scope, $http, $rootScope) {
     }).then(function successCallback(response) {
         $scope.listProducts = response.data;
         $scope.pageCount = Math.ceil($scope.listProducts.length / $scope.pageSize);
-        $rootScope.firtPageProduct = function () {
+        $rootScope.firtPageProduct=function(){
             $scope.begin = 0;
         }
-        $rootScope.prevPageProduct = function () {
-            if ($scope.begin > 0) {
+        $rootScope.prevPageProduct=function(){
+            if( $scope.begin > 0){
                 $scope.begin -= $scope.pageSize;
             }
         }
-        $rootScope.nextPageProduct = function () {
-            if ($scope.begin < ($scope.pageCount - 1) * $scope.pageSize) {
+        $rootScope.nextPageProduct=function(){
+            if( $scope.begin<($scope.pageCount-1)*$scope.pageSize){
                 $scope.begin += $scope.pageSize;
             }
         }
-        $rootScope.lastPageProduct = function () {
-            $scope.begin = ($scope.pageCount - 1) * $scope.pageSize
+        $rootScope.lastPageProduct=function(){
+            $scope.begin=($scope.pageCount-1)*$scope.pageSize
         }
     }, function errorCallback(response) {
         console.log(response);
@@ -198,6 +137,17 @@ function ProductController($scope, $http, $rootScope) {
 //Bảng câu hỏi
 function QuestionController($scope, $http, $routeParams, $rootScope) {
 
+    let decrementCountdown = function() {
+        $scope.countdown -= 1;
+        if ($scope.countdown < 1) {
+          $scope.message = "timed out";
+        }
+      };
+      let startCountDown = function() {
+        $interval(decrementCountdown, 1000, $scope.countdown)
+      };
+      $scope.countdown = 100;
+      startCountDown();
     // const timerDisplay = document.getElementById('timer');
     // $scope.countdown = 30;
     // let timeLeft = $scope.countdown;
@@ -282,7 +232,7 @@ function QuestionController($scope, $http, $routeParams, $rootScope) {
         }
     }, function errorCallback(response) {
         console.log(response);
-    });
+    });   
 }
 //End: Question
 

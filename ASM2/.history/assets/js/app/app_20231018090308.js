@@ -109,56 +109,56 @@ function LoginController($scope, $rootScope, $http) {
 function RegisterController($scope, $http) {
     $scope.isRegisterSuccess = false;
     $scope.listUers = [];
+    // $scope.emailInput=$scope.user.email;
+    // $scope.usernameInput=$scope.user.username;
+   
+    // $http({
+    //     method: 'POST',
+    //     url: BASE_URL + 'profiles',
+    //     data: $scope.user
+    // }).then(function successCallback(response) {
+    // }, function errorCallback(response) {           
+    // });
+
     $http({
         method: 'GET',
         url: BASE_URL + 'profiles'
     }).then(function successCallback(response) {
-        $scope.listUers = response.data;
+        $scope.listUers = response.data; 
         $scope.register = function () {
-            let emailInput = $scope.user.email;
-            let usernameInput = $scope.user.username;
+            let emailInput=$scope.user.email;
+            let usernameInput=$scope.user.username;
             $scope.listUers.forEach(element => {
-                if (element.username == usernameInput && element.email == emailInput) {
+                if (element.username == usernameInput && element.email == emailInput){
                     Swal.fire({
                         icon: 'error',
                         title: 'Register Failed',
                         text: "Tên đăng nhập và email đã tồn tại",
                     });
-                } else if (element.username == usernameInput) {
+                }else if(element.username == usernameInput){
                     Swal.fire({
                         icon: 'error',
                         title: 'Register Failed',
                         text: "Tên đăng nhập đã tồn tại",
                     });
-                } else if (element.email == emailInput) {
+                }else if(element.email == emailInput){
                     Swal.fire({
                         icon: 'error',
                         title: 'Register Failed',
                         text: "Email đã tồn tại",
                     });
-                } else {
-                    $scope.isRegisterSuccess = true;
-                }
-            })
-            if ($scope.isRegisterSuccess==true) {
-                $('#registerModal').modal('hide');
-                $http({
-                    method: 'POST',
-                    url: BASE_URL + 'profiles',
-                    data: $scope.user
-                }).then(function successCallback(response) {
+                }else{
                     Swal.fire({
                         icon: 'success',
                         title: 'Register Success',
-                        text: "Đăng ký thành công",
-                    });                  
-                }, function errorCallback(response) {
-                });
-            }
-        }
+                        text: "OK",
+                    });
+                }
+            })
+         }
     }, function errorCallback(response) {
     });
-   
+
 }
 
 // Start: danh sách khóa học

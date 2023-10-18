@@ -109,6 +109,7 @@ function LoginController($scope, $rootScope, $http) {
 function RegisterController($scope, $http) {
     $scope.isRegisterSuccess = false;
     $scope.listUers = [];
+
     $http({
         method: 'GET',
         url: BASE_URL + 'profiles'
@@ -137,28 +138,24 @@ function RegisterController($scope, $http) {
                         text: "Email đã tồn tại",
                     });
                 } else {
-                    $scope.isRegisterSuccess = true;
+                    $http({
+                        method: 'POST',
+                        url: BASE_URL + 'profiles',
+                        data: $scope.user
+                    }).then(function successCallback(response) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Register Success',
+                            text: "Đăng ký thành công",
+                        });
+                    }, function errorCallback(response) {
+                    });
                 }
             })
-            if ($scope.isRegisterSuccess==true) {
-                $('#registerModal').modal('hide');
-                $http({
-                    method: 'POST',
-                    url: BASE_URL + 'profiles',
-                    data: $scope.user
-                }).then(function successCallback(response) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Register Success',
-                        text: "Đăng ký thành công",
-                    });                  
-                }, function errorCallback(response) {
-                });
-            }
         }
     }, function errorCallback(response) {
     });
-   
+
 }
 
 // Start: danh sách khóa học

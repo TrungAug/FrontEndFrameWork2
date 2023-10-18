@@ -141,7 +141,6 @@ function RegisterController($scope, $http) {
                 }
             })
             if ($scope.isRegisterSuccess==true) {
-                $('#registerModal').modal('hide');
                 $http({
                     method: 'POST',
                     url: BASE_URL + 'profiles',
@@ -151,7 +150,7 @@ function RegisterController($scope, $http) {
                         icon: 'success',
                         title: 'Register Success',
                         text: "Đăng ký thành công",
-                    });                  
+                    });
                 }, function errorCallback(response) {
                 });
             }
