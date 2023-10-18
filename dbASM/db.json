@@ -1,15 +1,15 @@
 {
   "profiles": [
     {
-      "id": 1,
-      "username": "teonv",
       "password": "iloveyou",
+      "username": "teonv",
       "fullname": "Nguyễn Văn Tèo",
-      "email": "teonv@fpt.edu.vn",
+      "email": "tnv@fpt.edu.vn",
       "gender": "true",
-      "birthday": "1995-12-21",
-      "schoolfee": "1500000",
-      "marks": "0"
+      "birthday": "1985-10-11",
+      "schoolfee": "2500000",
+      "marks": "0",
+      "id": 1
     },
     {
       "id": 2,
@@ -72,6 +72,14 @@
       "email": "tinh@gmail.com",
       "password": "12345678",
       "id": 8
+    },
+    {
+      "password": "12345678",
+      "id": 9
+    },
+    {
+      "password": "12345678",
+      "id": 10
     }
   ],
   "products": [
